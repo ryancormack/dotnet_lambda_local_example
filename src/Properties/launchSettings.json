@@ -1,0 +1,32 @@
+{
+  "profiles": {
+    "ApiGw Test": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\%USERNAME%\\.dotnet\\tools\\dotnet-lambda-test-tool-3.1.exe",
+      "commandLineArgs": "--no-ui --payload apigw.json --function-handler LambdaDotNetDebug::LambdaDotNetDebug.ApiGwHandler::EntryPoint",
+      "workingDirectory": ".\\bin\\Debug\\netcoreapp3.1",
+      "environmentVariables": {
+        "SOME_ENV_VAR": "my string"
+      }
+    },
+    "SQS Test": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\%USERNAME%\\.dotnet\\tools\\dotnet-lambda-test-tool-3.1.exe",
+      "commandLineArgs": "--no-ui --payload sqs.json --function-handler LambdaDotNetDebug::LambdaDotNetDebug.SqsHandler::EntryPoint",
+      "workingDirectory": ".\\bin\\Debug\\netcoreapp3.1",
+      "environmentVariables": {
+        "SOME_ENV_VAR": "my string"
+      }
+    },
+    "Dynamo Test": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\%USERNAME%\\.dotnet\\tools\\dotnet-lambda-test-tool-3.1.exe",
+      "commandLineArgs": "--no-ui --payload ddb.json --function-handler LambdaDotNetDebug::LambdaDotNetDebug.Dynamo.DynamoHandler::EntryPoint",
+      "workingDirectory": ".\\bin\\Debug\\netcoreapp3.1",
+      "environmentVariables": {
+        "SOME_ENV_VAR": "my string",
+        "AWS_REGION": "eu-west-1" 
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+service: dotnetlambdadebugtest
+frameworkVersion: '2'
+provider:
+  name: aws
+  runtime: dotnetcore3.1
+  lambdaHashingVersion: 20201221
+
+package:
+  individually: true
+
+functions:
+  apigw:
+    handler: LambdaDotNetDebug::LambdaDotNetDebug.ApiGwHandler::EntryPoint
+    events:
+      - http:
+          method: GET
+          path: /some/path        
+    package:
+      artifact: bin/Release/netcoreapp3.1/package.zip
+  sqs:
+    handler: LambdaDotNetDebug::LambdaDotNetDebug.SqsHandler::EntryPoint
+    events:
+      - sqs: some:arn       
+    package:
+      artifact: bin/Release/netcoreapp3.1/package.zip
+  ddb:
+    handler: LambdaDotNetDebug::LambdaDotNetDebug.DynamoHandler::EntryPoint
+    events:
+      - stream:
+          type: dynamodb
+          arn: some:arn
+    package:
+      artifact: bin/Release/netcoreapp3.1/package.zip
